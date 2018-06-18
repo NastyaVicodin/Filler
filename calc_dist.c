@@ -12,46 +12,36 @@
 
 #include "filler.h"
 
-t_answer *find_min_dist(t_answer *ans, t_filler *str_filler, int x, int y)
+static	t_answer	*find_min_dist(t_answer *ans, t_filler *f, int x, int y)
 {
 	int		i;
 	int		j;
 	char	fig;
-	int		k;
 	int		dist;
 
-	k = 0;
-	fig = str_filler->player == 'X' ? 'O' : 'X';
+	fig = f->player == 'X' ? 'O' : 'X';
 	i = -1;
-	j = -1;
 	while (ans->new_board[++i])
 	{
+		j = -1;
 		while (ans->new_board[i][++j])
 		{
 			if (ans->new_board[i][j] == fig)
 			{
 				dist = ABS(x - i) + ABS(y - j);
-				if (k == 0 || dist < ans->cur_distance)
-				{
+				if (ans->cur_distance == -1 || dist < ans->cur_distance)
 					ans->cur_distance = dist;
-					k++;
-				}
-				
-				//ans->cur_distance = dist < ans->distance ? dist : ;
-				// ans->x_coord = dist < ans->distance ? cf[0] : ans->x_coord;
-				// ans->y_coord = dist < ans->distance ? cf[1] : ans->y_coord;
 			}
 		}
-		j = -1;
 	}
 	return (ans);
 }
 
-t_answer *calc_dist(t_answer *ans, t_filler *f, int *cf)
+t_answer			*calc_dist(t_answer *ans, t_filler *f)
 {
 	int		i;
 	int		j;
-	(void)cf;
+
 	i = -1;
 	j = -1;
 	while (ans->new_board[++i])

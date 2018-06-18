@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-size_t	ft_count_c(char const *str, char c)
+
+size_t			ft_count_c(char const *str, char c)
 {
 	size_t i;
 
@@ -21,6 +22,7 @@ size_t	ft_count_c(char const *str, char c)
 			i++;
 	return (i);
 }
+
 static char		*ft_strccpy(char *str)
 {
 	size_t	len;

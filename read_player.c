@@ -26,9 +26,5 @@ t_filler	*read_player(t_filler *str_filler)
 	else if (line[i] == '2')
 		str_filler->player = 'X';
 	free(line);
-	// write(2, "--------------\n", 15);
-	// write(2, &(str_filler->player), 1);
-	// write(2, "\n", 1);
-	// write(2, "--------------\n", 15);
 	return (str_filler);
 }

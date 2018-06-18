@@ -26,21 +26,13 @@ static t_filler	*get_token_size(t_filler *str_filler)
 	start = i;
 	while ('0' <= line[i] && line[i] <= '9')
 		i++;
-	//write(2, "SIZE\n", 5);
 	num = ft_strsub(line, start, i - start);
-	// write(2, num, ft_strlen(num));
-	// write(2, "\n", 1);
 	str_filler->t_height = ft_atoi(num);
 	free(num);
 	num = ft_strsub(line, i + 1, ft_strlen(line) - i - 2);
-	// write(2, num, ft_strlen(num));
-	// write(2, "\n", 1);
-	// write(2, "-----\n", 6);
 	str_filler->t_wid = ft_atoi(num);
 	free(num);
 	free(line);
-	//get_next_line(0, &line);
-	//free(line);
 	return (str_filler);
 }
 
@@ -60,17 +52,6 @@ static t_filler	*fill_token(t_filler *f)
 		i++;
 	}
 	i = 0;
-	// write(2, "\x1B[33m", 6);
-	// write(2, "-----\n", 6);
-	// write(2, "TOKEN\n", 6);
-	// while (f->token[i])
-	// {
-	// 	write(2, f->token[i], ft_strlen(f->token[i]));
-	// 	write(2, "\n", 1);
-	// 	i++;
-	// }
-	// write(2, "-----\n", 6);
-	// write(2, "\x1B[0m", 5);
 	return (f);
 }
 

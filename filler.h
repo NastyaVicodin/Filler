@@ -35,11 +35,9 @@ typedef struct		s_answer
 	int		distance;
 	int		cur_distance;
 }					t_answer;
-
-
-t_filler    		*read_player(t_filler *str_filler);
-t_filler    		*read_board(t_filler *str_filler);
-t_filler    		*read_token(t_filler *str_filler);
+t_filler			*read_player(t_filler *str_filler);
+t_filler			*read_board(t_filler *str_filler);
+t_filler			*read_token(t_filler *str_filler);
 t_answer			*paste_fig(int *xy, t_filler *str_filler, t_answer *ans);
-t_answer * calc_dist(t_answer *ans, t_filler *f, int *cf);
+t_answer			*calc_dist(t_answer *ans, t_filler *f);
 #endif
