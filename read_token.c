@@ -47,7 +47,6 @@ static t_filler	*fill_token(t_filler *f)
 	while (i < f->t_height)
 	{
 		start = 0;
-		f->token[i] = (char *)malloc(sizeof(char) * (f->t_wid + 1));
 		get_next_line(0, &(f->token[i]));
 		i++;
 	}

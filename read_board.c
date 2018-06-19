@@ -52,7 +52,6 @@ static t_filler		*fill_board(t_filler *f)
 	while (i < f->b_height)
 	{
 		start = 0;
-		f->board[i] = (char *)malloc(sizeof(char) * (f->b_wid + 1));
 		get_next_line(0, &(line));
 		while (line[start] && line[start] != ' ')
 			start++;

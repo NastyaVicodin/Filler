@@ -25,6 +25,7 @@ typedef struct		s_filler
 	size_t	t_height;
 	char	**token;
 	char	*coords;
+
 }					t_filler;
 typedef struct		s_answer
 {
@@ -35,9 +36,22 @@ typedef struct		s_answer
 	int		distance;
 	int		cur_distance;
 }					t_answer;
+typedef	struct		s_where_fig
+{
+	int		sten_you[2];
+	int		sten_he[2];
+	char	you;
+	char	he;
+	char	res;
+}					t_where;
 t_filler			*read_player(t_filler *str_filler);
 t_filler			*read_board(t_filler *str_filler);
 t_filler			*read_token(t_filler *str_filler);
+t_answer			*make_new_board(t_answer *ans, t_filler *f);
+t_where				*check_where_square(t_filler *str_filler, t_where *w);
+t_answer			*insert_fig(int *xy, int *ij, t_filler *f, t_answer *a);
 t_answer			*paste_fig(int *xy, t_filler *str_filler, t_answer *ans);
 t_answer			*calc_dist(t_answer *ans, t_filler *f);
+t_answer			*paste_high_low(t_filler *f, t_answer *ans, t_where *w);
+void				free_array(char **arr);
 #endif

@@ -18,21 +18,20 @@ t_answer		*make_new_board(t_answer *ans, t_filler *f)
 	int		j;
 
 	i = -1;
-	j = -1;
 	ans->new_board = (char **)malloc(sizeof(char *) * (f->b_height + 1));
 	ans->new_board[f->b_height] = NULL;
 	while (f->board[++i])
 	{
+		j = -1;
 		ans->new_board[i] = (char *)malloc(sizeof(char) * (f->b_wid + 1));
 		ans->new_board[i][f->b_wid] = '\0';
 		while (f->board[i][++j])
 			ans->new_board[i][j] = f->board[i][j];
-		j = -1;
 	}
 	return (ans);
 }
 
-static t_answer	*insert_fig(int *xy, int *ij, t_filler *f, t_answer *a)
+t_answer		*insert_fig(int *xy, int *ij, t_filler *f, t_answer *a)
 {
 	int		i;
 	int		j;
@@ -94,7 +93,7 @@ t_answer		*paste_fig(int *xy, t_filler *str_filler, t_answer *ans)
 				ij[0] = i;
 				ij[1] = j;
 				find_answer(ans, xy, str_filler, ij);
-				free(ans->new_board);
+				free_array(ans->new_board);
 				if (ans->distance == 1 || ans->distance == 0)
 					return (ans);
 			}

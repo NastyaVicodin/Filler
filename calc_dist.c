@@ -26,7 +26,7 @@ static	t_answer	*find_min_dist(t_answer *ans, t_filler *f, int x, int y)
 		j = -1;
 		while (ans->new_board[i][++j])
 		{
-			if (ans->new_board[i][j] == fig)
+			if (ans->new_board[i][j] == fig || ans->new_board[i][j] == 'o')
 			{
 				dist = ABS(x - i) + ABS(y - j);
 				if (ans->cur_distance == -1 || dist < ans->cur_distance)
