@@ -48,7 +48,7 @@ t_answer			*calc_dist(t_answer *ans, t_filler *f)
 	{
 		while (ans->new_board[i][++j])
 		{
-			if (ans->new_board[i][j] == f->player)
+			if (ans->new_board[i][j] == '1')
 				find_min_dist(ans, f, i, j);
 		}
 		j = -1;

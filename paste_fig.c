@@ -50,7 +50,7 @@ t_answer		*insert_fig(int *xy, int *ij, t_filler *f, t_answer *a)
 				if ((x = xy[0] + i - ij[0]) >= 0 && x < f->b_height && y >= 0 &&
 					(y = xy[1] + j - ij[1]) < f->b_wid &&
 					((i == ij[0] && j == ij[1]) || a->new_board[x][y] == '.'))
-					a->new_board[x][y] = f->player;
+					a->new_board[x][y] = '1';
 				else
 					a->error = -1;
 				if (a->error == -1)

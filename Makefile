@@ -44,7 +44,7 @@ SOURCE_LIB = ./libft/ft_memset.c ./libft/ft_bzero.c ./libft/ft_memcpy.c 		\
             ./libft/ft_allupper.c ./libft/ft_print_s.c ./libft/get_next_line.c
 
 SOURCE_FILLER = main.c read_player.c read_board.c read_token.c calc_dist.c 		\
-				paste_fig.c check_where_square.c paste_high_low.c
+				paste_fig.c
 
 OBJS_LIB = $(SOURCE_LIB:.c=.o)
 OBJS_FILLER = $(SOURCE_FILLER:.c=.o)
@@ -52,7 +52,7 @@ OBJS_FILLER = $(SOURCE_FILLER:.c=.o)
 all: $(LIB) $(FILLER)
 
 %.o:%.c
-	gcc -Wall -Wextra -Werror -o $@ -c $<
+	@gcc -Wall -Wextra -Werror -o $@ -c $<
 
 $(LIB): $(OBJS_LIB)
 

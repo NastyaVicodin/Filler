@@ -14,6 +14,7 @@
 # define FILLER_H
 
 # include "libft/libft.h"
+# include "mlx.h"
 
 typedef struct		s_filler
 {

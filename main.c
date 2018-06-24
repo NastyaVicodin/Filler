@@ -68,15 +68,10 @@ static void		print_answer(t_filler *str_filler)
 	ans->x_coord = -1;
 	ans->y_coord = -1;
 	ans->distance = -2;
-	//check_where_square(str_filler, w);
-	// if (w->res != 'n')
-	// 	paste_high_low(str_filler, ans, w);
-	// else
 	paste_manhattan(str_filler, ans);
 	ft_printf("%d %d\n", ans->x_coord, ans->y_coord);
 	free(ans);
 	free(w);
-
 }
 
 int				main(void)
@@ -85,7 +80,6 @@ int				main(void)
 
 	str_filler = make_struct();
 	read_player(str_filler);
-
 	while (str_filler->b_wid)
 	{
 		str_filler->b_wid = 0;
@@ -94,7 +88,6 @@ int				main(void)
 		if (str_filler->b_wid)
 		{
 			read_token(str_filler);
-			
 			print_answer(str_filler);
 			free_array(str_filler->board);
 			free_array(str_filler->token);
