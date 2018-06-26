@@ -41,7 +41,8 @@ SOURCE_LIB = ./libft/ft_memset.c ./libft/ft_bzero.c ./libft/ft_memcpy.c 		\
             ./libft/ft_print_b.c ./libft/ft_print_s_w.c ./libft/ft_itoa_u.c		\
             ./libft/ft_print_x.c ./libft/ft_print_c_w.c ./libft/ft_print_c.c  	\
             ./libft/ft_putnbr_u.c ./libft/ft_print_nbr.c ./libft/ft_print_str.c \
-            ./libft/ft_allupper.c ./libft/ft_print_s.c ./libft/get_next_line.c
+            ./libft/ft_allupper.c ./libft/ft_print_s.c ./libft/get_next_line.c 	\
+            ./libft/free_array.c
 
 SOURCE_FILLER = main.c read_player.c read_board.c read_token.c calc_dist.c 		\
 				paste_fig.c

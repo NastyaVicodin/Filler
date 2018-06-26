@@ -13,12 +13,10 @@
 LIB = ../libft.a
 VISUALIZATION = visual
 
-SRC_VISUAL = main.c
-# SOURCE_FILLER = ../read_player.c ../read_board.c ../read_token.c ../calc_dist.c 		\
-# 				../paste_fig.c
+SRC_VISUAL = main.c read_board_vis.c read_player_vis.c draw_cell.c
 
 OBJS_VISUAL = $(SRC_VISUAL:.c=.o)
-# OBJS_FILLER = $(SOURCE_FILLER:.c=.o)
+
 all: $(VISUALIZATION)
 
 %.o:%.c

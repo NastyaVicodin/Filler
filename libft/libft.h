@@ -144,4 +144,5 @@ t_printf			*ft_print_s(t_printf *var, va_list ap);
 t_printf			*ft_print_nbr(t_printf *var, va_list ap);
 t_printf			*ft_print_str(const char *form, t_printf *var, va_list ap);
 int					ft_printf(const char *format, ...);
+void				free_array(char **arr);
 #endif

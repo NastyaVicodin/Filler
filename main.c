@@ -84,7 +84,6 @@ int				main(void)
 	{
 		str_filler->b_wid = 0;
 		read_board(str_filler);
-
 		if (str_filler->b_wid)
 		{
 			read_token(str_filler);
