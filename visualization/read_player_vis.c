@@ -26,7 +26,7 @@ static char		*extract_name(char *line, int len)
 	return (res);
 }
 
-t_filler		*read_player_vis(t_filler *str_filler)
+t_vis			*read_player_vis(t_vis *v)
 {
 	char	*line;
 	int		i;
@@ -45,9 +45,9 @@ t_filler		*read_player_vis(t_filler *str_filler)
 		i++;
 	len = ft_strlen(line);
 	if (line[i] == '1')
-		str_filler->pl_o = extract_name(line, len);
+		v->pl_o = extract_name(line, len);
 	else if (line[i] == '2')
-		str_filler->pl_x = extract_name(line, len);
+		v->pl_x = extract_name(line, len);
 	free(line);
-	return (str_filler);
+	return (v);
 }

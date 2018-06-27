@@ -34,7 +34,7 @@ static t_filler		*fill_board_size(t_filler *str_filler, char *line)
 	return (str_filler);
 }
 
-static void			put_results(char *line, void **mlx_win)
+static void			put_results(char *line, t_vis *v)
 {
 	int		i;
 	char	*res_o;
@@ -51,13 +51,13 @@ static void			put_results(char *line, void **mlx_win)
 		i++;
 	res_x = ft_strsub(line, i, ft_strlen(line));
 	free(line);
-	mlx_string_put(mlx_win[0], mlx_win[1], 400, 1010, 0x7B68EE, res_o);
-	mlx_string_put(mlx_win[0], mlx_win[1], 900, 1010, 0x4169E1, res_x);
+	mlx_string_put(v->mlx, v->win, 400, 1010, 0x7B68EE, res_o);
+	mlx_string_put(v->mlx, v->win, 900, 1010, 0x4169E1, res_x);
 	free(res_o);
 	free(res_x);
 }
 
-static t_filler		*get_board_size(t_filler *str_filler, void **mlx_win)
+static t_filler		*get_board_size(t_filler *str_filler, t_vis *v)
 {
 	char	*line;
 	int		i;
@@ -68,7 +68,7 @@ static t_filler		*get_board_size(t_filler *str_filler, void **mlx_win)
 		if (i && line[0] == '=')
 		{
 			i = 0;
-			put_results(line, mlx_win);
+			put_results(line, v);
 			break ;
 		}
 		else if (i && line[1] != 'l')
@@ -106,10 +106,10 @@ static t_filler		*fill_board(t_filler *f)
 	return (f);
 }
 
-t_filler			*read_board_vis(t_filler *str_filler, void **mlx_win)
+t_filler			*read_board_vis(t_filler *str_filler, t_vis *v)
 {
 	str_filler->b_wid = 0;
-	get_board_size(str_filler, mlx_win);
+	get_board_size(str_filler, v);
 	if (str_filler->b_wid)
 		fill_board(str_filler);
 	return (str_filler);

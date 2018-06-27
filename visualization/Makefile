@@ -10,7 +10,7 @@
 #                                                                              #
 #******************************************************************************#
 
-LIB = ../libft.a
+LIB = ../libft/libft.a
 VISUALIZATION = visual
 
 SRC_VISUAL = main.c read_board_vis.c read_player_vis.c draw_cell.c
@@ -19,10 +19,13 @@ OBJS_VISUAL = $(SRC_VISUAL:.c=.o)
 
 all: $(VISUALIZATION)
 
+$(LIB):
+	make -C ../libft
+
 %.o:%.c
 	gcc -Wall -Wextra -Werror -o $@ -c $<
 
-$(VISUALIZATION): $(OBJS_VISUAL)
+$(VISUALIZATION): $(OBJS_VISUAL) $(LIB)
 	gcc -o $(VISUALIZATION) $(OBJS_VISUAL) $(LIB) -lmlx -framework OpenGL -framework AppKit
 
 clean:

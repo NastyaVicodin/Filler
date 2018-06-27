@@ -26,8 +26,6 @@ typedef struct		s_filler
 	size_t	t_height;
 	char	**token;
 	char	*coords;
-	char	*pl_o;
-	char	*pl_x;
 }					t_filler;
 typedef struct		s_answer
 {
@@ -53,7 +51,12 @@ typedef struct		s_vis
 	int		size_heig;
 	int		b_x;
 	int		b_y;
+	void	*mlx;
+	void	*win;
+	char	*pl_o;
+	char	*pl_x;
 }					t_vis;
+
 t_filler			*read_player(t_filler *str_filler);
 t_filler			*read_board(t_filler *str_filler);
 t_filler			*read_token(t_filler *str_filler);
@@ -63,9 +66,9 @@ t_answer			*insert_fig(int *xy, int *ij, t_filler *f, t_answer *a);
 t_answer			*paste_fig(int *xy, t_filler *str_filler, t_answer *ans);
 t_answer			*calc_dist(t_answer *ans, t_filler *f);
 t_answer			*paste_high_low(t_filler *f, t_answer *ans, t_where *w);
-t_filler			*read_player_vis(t_filler *str_filler);
-t_filler			*read_board_vis(t_filler *str_filler, void **mlx_win);
-int					put_color_x(void **mlx_win, int *xy, int color, int loop);
-int					put_color_y(void **mlx_win, int *xy, int color, int loop);
-int					*draw_cell(void **mlx_win, int *xy, t_filler *f, t_vis *v);
+t_vis				*read_player_vis(t_vis *v);
+t_filler			*read_board_vis(t_filler *str_filler, t_vis *v);
+int					put_color_x(t_vis *v, int *xy, int color, int loop);
+int					put_color_y(t_vis *v, int *xy, int color, int loop);
+int					*draw_cell(int *xy, t_filler *f, t_vis *v);
 #endif

@@ -35,61 +35,63 @@ static t_vis	*count_sizes(t_filler *str_filler, t_vis *v)
 	return (v);
 }
 
-static int		draw_board(void **mlx_win, t_filler *f, t_vis *v)
+static int		draw_board(void *vis)
 {
-	int	i;
-	int	xy[2];
+	int			i;
+	int			xy[2];
+	t_filler	*f;
+	t_vis		*v;
 
-	while (1)
+	v = (t_vis *)vis;
+	f = make_struct();
+	xy[0] = 0;
+	i = -1;
+	v->b_x = 0;
+	read_board_vis(f, v);
+	if (f->b_wid != 0)
 	{
-		mlx_string_put(mlx_win[0], mlx_win[1], 200, 1010, 0x7B68EE, f->pl_o);
-		mlx_string_put(mlx_win[0], mlx_win[1], 700, 1010, 0x4169E1, f->pl_x);
-		xy[0] = 0;
-		i = -1;
-		v->b_x = 0;
-		read_board_vis(f, mlx_win);
-		if (f->b_wid == 0)
-			break ;
 		count_sizes(f, v);
 		while (++i < f->b_height)
 		{
-			xy[0] = put_color_x(mlx_win, xy, 0xB0C4DE, 3);
-			draw_cell(mlx_win, xy, f, v);
+			xy[0] = put_color_x(v, xy, 0xB0C4DE, 3);
+			draw_cell(xy, f, v);
 			v->b_x++;
 		}
-		xy[0] = put_color_x(mlx_win, xy, 0xB0C4DE, 1000 - v->size_heig + 4);
-		f->board ? free_array(f->board) : 0;
+		xy[0] = put_color_x(v, xy, 0xB0C4DE, 1000 - v->size_heig + 4);
+		free_array(f->board);
 	}
-	free(f->pl_x);
-	free(f->pl_o);
 	free(f);
-	free(v);
 	return (0);
 }
-// static	int		key(int num, void **mlx_win)
-// {
-// 	(void)mlx_win;
-// 	if (num == 53)
-// 	{
-// 		exit(1);
-// 	}
-// 	return (0);
-// }
+
+static	int		key(int num, void *vis)
+{
+	t_vis		*v;
+
+	v = (t_vis *)vis;
+	if (num == 53)
+	{
+		free(v->pl_x);
+		free(v->pl_o);
+		free(v);
+		exit(1);
+	}
+	return (0);
+}
+
 int				main(void)
 {
-	void		*mlx_win[2];
-	t_vis		*v;
-	t_filler	*f;
+	t_vis	*v;
 
-	mlx_win[0] = mlx_init();
-	mlx_win[1] = mlx_new_window(mlx_win[0], 1000, 1050, "Filler");
-	f = make_struct();
 	v = (t_vis *)malloc(sizeof(t_vis));
-	read_player_vis(f);
-	read_player_vis(f);
-	draw_board(mlx_win, f, v);
-	//mlx_loop_hook(mlx_win[0], draw_board, mlx_win);
-	//mlx_key_hook(mlx_win[0], key, &mlx_win);
-	mlx_loop(mlx_win[0]);
+	read_player_vis(v);
+	read_player_vis(v);
+	v->mlx = mlx_init();
+	v->win = mlx_new_window(v->mlx, 1000, 1050, "Filler");
+	mlx_string_put(v->mlx, v->win, 200, 1010, 0x7B68EE, v->pl_o);
+	mlx_string_put(v->mlx, v->win, 700, 1010, 0x4169E1, v->pl_x);
+	mlx_loop_hook(v->mlx, draw_board, v);
+	mlx_key_hook(v->win, key, v);
+	mlx_loop(v->mlx);
 	return (0);
 }
